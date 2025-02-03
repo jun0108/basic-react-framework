@@ -1,0 +1,50 @@
+@use "./base/reset" as *;
+@use "./layout/wrapper" as *;
+@use "./components/buttons" as *;
+
+.todo {
+  .todo__list {
+    width: 300px;
+    padding-top: 10px;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px;
+      border: 1px solid lightgray;
+      border-radius: 30px;
+      & + li {
+        margin-top: 8px;
+      }
+      &.is-checked {
+        p{
+          text-decoration: line-through;
+        }
+      }
+      p {
+        margin-right: 8px;
+        font-weight: 600;
+      }
+      [type="checkbox"] {
+        appearance: none; 
+        box-sizing: border-box;
+        background-clip: content-box;
+        padding: 3px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid #dddddd;
+        cursor: pointer;
+      }
+      [type="checkbox"]:checked {
+        border-color: yellowgreen;
+        background-color: yellowgreen;
+      }
+      button {
+        display: flex;
+        align-items: center;
+        margin-left: 8px;
+      }
+    }
+  }
+}
