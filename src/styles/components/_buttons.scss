@@ -1,27 +1,132 @@
-.btn {
-    &__primary {
-        height: 36px;
-        padding: 0 8px;
-        background: #404040;
-        box-shadow:  4px 4px 7px #363636, -4px -4px 7px #4a4a4a;
-        border-radius: 6px;
-        transition: all 150ms ease;
-        &:hover {
-            background: linear-gradient(145deg, #3a3a3a, #444444);
-            box-shadow:  4px 4px 7px #363636,
-                -4px -4px 7px #4a4a4a;
-        }
-    }
-}
-.cm-input {
-    height: 36px;
-    padding: 0 8px;
-    background: #404040;
-    box-shadow:  4px 4px 7px #363636, -4px -4px 7px #4a4a4a;
-    border-radius: 6px;
-    transition: all 150ms ease;
+@use "sass:map";
+@use "../helpers/mixins/index" as *;
+/* ========================== Variables ========================== */
+$button-style: (
+  sm: (
+    min-width: 60px,
+    height: var(--form-height-sm),
+    padding: 10px,
+  ),
+  md: (
+    min-width: 80px,
+    height: var(--form-height-md),
+    padding: 10px,
+  ),
+  lg: (
+    min-width: 100px,
+    height: var(--form-height-lg),
+    padding: 20px,
+  ),
+  xl: (
+    min-width: 120px,
+    height: var(--form-height-xl),
+    padding: 20px,
+  ),
+);
+$button-solid-colors: (
+  primary: (
+    text: var(--color-white),
+    default: var(--color-primary-800),
+    hover: var(--color-primary-900),
+    disabled: var(--color-gray-500)
+  ),
+  secondary: (
+    text: var(--color-white),
+    default: var(--color-secondary-800),
+    hover: var(--color-secondary-900),
+    disabled: var(--color-gray-500)
+  ),
+  gray: (
+    text: var(--color-gray-500),
+    default: var(--color-gray-50),
+    hover: var(--color-gray-100),
+    disabled: var(--color-gray-200),
+  ),
+);
+$button-line-colors: (
+  primary: (
+    text: var(--color-primary-800),
+    default: var(--color-primary-800),
+    hover: var(--color-primary-900),
+    disabled: var(--color-gray-500)
+  ),
+  secondary: (
+    text: var(--color-secondary-800),
+    default: var(--color-secondary-800),
+    hover: var(--color-secondary-900),
+    disabled: var(--color-gray-500)
+  ),
+  gray: (
+    text: var(--color-gray-500),
+    default: var(--color-gray-50),
+    hover: var(--color-gray-100),
+    disabled: var(--color-gray-200),
+  ),
+);
+/* ========================== Mixins ========================== */
+@mixin btn-base($size) {
+  $size-map: map.get($button-style, $size);
 
-    &:hover, &:focus {
-        box-shadow: inset 4px 4px 7px #363636, inset -4px -4px 7px #4a4a4a;
+  display: inline-block;
+  width: max-content;
+  height: map.get($size-map, height);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  &:not(&.btn__icon) {
+    min-width: map.get($size-map, min-width);
+    padding: 0 map.get($size-map, padding);
+  }
+  &.btn__icon {
+    width: map.get($size-map, height);
+    padding: 0;
+  }
+  // 사이즈 별 커스텀 스타일
+  @if $size == 'xl' {
+    font-size: var(--font-size-16);
+    font-weight: 700;
+  }
+  @if $size == 'lg' {
+    font-weight: 700;
+  }
+}
+@mixin btn-color($type, $color) {
+  $color-map: if($type == 'solid', map.get($button-solid-colors, $color), map.get($button-line-colors, $color));
+  
+  @include typo(var(--font-size-14), 500, map.get($color-map, text));
+  background-color: if($type == 'solid', map.get($color-map, default), var(--color-white));
+  border: 1px solid map.get($color-map, default);
+  &:hover:not(:disabled) {
+    background-color: if($type == 'solid', map.get($color-map, hover), var(--color-white));
+    border-color: map.get($color-map, hover);
+    color: if($type == 'line', map.get($color-map, hover), null);
+  }
+  &:disabled {
+    background-color: if($type == 'solid', map.get($color-map, disabled), var(--color-white));
+    border-color: map.get($color-map, disabled);
+    color: if($type == 'line', map.get($color-map, disabled), null);
+  }
+}
+/* ========================== Styles ========================== */
+.btn {
+  &__full {
+    @each $color in map.keys($button-solid-colors) {
+      @each $size in map.keys($button-style) {
+        &--#{"" + $color}-#{$size} {
+          @include btn-base($size: $size);
+          @include btn-color($type: 'solid', $color: $color);
+        }
+      }
     }
+  }
+  &__line {
+    @each $color in map.keys($button-line-colors) {
+      @each $size in map.keys($button-style) {
+        &--#{"" + $color}-#{$size} {
+          @include btn-base($size: $size);
+          @include btn-color($type: 'line', $color: $color);
+        }
+      }
+    }
+  }
 }

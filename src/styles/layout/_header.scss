@@ -1,0 +1,15 @@
+@use "../helpers/mixins/index" as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  padding: 0 30px;
+  background: var(--layout-header-height);
+  background-color: var(--color-primary-800);
+  color: var(--color-white);
+  h1 {
+    @include typo(var(--font-size-24),600);
+  }
+}

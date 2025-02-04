@@ -1,0 +1,126 @@
+/* ===== Variables Map ===== */
+/* Typography */
+$font-size-map: (
+  28: 28px,
+  24: 24px,
+  22: 22px,
+  21: 21px,
+  20: 20px,
+  18: 18px,
+  17: 17px,
+  16: 16px,
+  15: 15px,
+  14: 14px,
+  13: 13px,
+  12: 12px
+);
+:root {
+  @each $key, $value in $font-size-map {
+    --font-size-#{$key}: #{$value};
+  }
+}
+
+/* Media Query */
+$media-query-map: (
+  mobile: 375px,
+  tablet: 600px,
+  desktop: 1024px
+);
+
+:root {
+  @each $key, $value in $media-query-map {
+    --breakpoint-#{$key}: #{$value};
+  }
+}
+
+/* ===== Layout ===== */
+:root {
+  --layout-min-width: 320px;
+  --layout-header-height: 60px;
+  --layout-footer-height: 40px;
+  --layout-sidebar-width: 280px;
+  --layout-padding: 20px 30px;
+}
+
+/* Media Query */
+$z-index-map: (
+  header: 1000
+);
+
+:root {
+  @each $key, $value in $z-index-map {
+    --z-index-#{$key}: #{$value};
+  }
+}
+
+/* ===== Color ===== */
+:root {
+  // Primary Scale
+  --color-primary-900: #065F46;
+  --color-primary-800: #047857;
+  --color-primary-700: #059669;
+  --color-primary-600: #10B981;
+  --color-primary-500: #34D399;
+  --color-primary-400: #6EE7B7;
+  --color-primary-300: #A7F3D0;
+  --color-primary-200: #D1FAE5;
+  --color-primary-100: #ECFDF5;
+  
+  // Secondary Scale
+  --color-secondary-900: #3D2410;
+  --color-secondary-800: #5D3817;
+  --color-secondary-700: #814D23;
+  --color-secondary-600: #A16232;
+  --color-secondary-500: #C28153;
+  --color-secondary-400: #D9A37A;
+  --color-secondary-300: #EAC7AA;
+  --color-secondary-200: #F4E1D2;
+  --color-secondary-100: #FDF7F2;
+
+  // Gray Scale
+  --color-gray-900: #1F2937;
+  --color-gray-800: #374151;
+  --color-gray-700: #4B5563;
+  --color-gray-600: #6B7280;
+  --color-gray-500: #9CA3AF;
+  --color-gray-400: #D1D5DB;
+  --color-gray-300: #E5E7EB;
+  --color-gray-200: #F3F4F6;
+  --color-gray-100: #F9FAFB;
+
+  // Status Scale
+  --color-red-900: #c2172b;
+
+  // Etc Scale
+  --color-black: #000000;
+  --color-white: #ffffff;
+}
+
+/* Border Radius */
+:root {
+  --radius-full: 100%;
+  --radius-xl: 100px;
+  --radius-lg: 20px;
+  --radius-md: 6px;
+  --radius-sm: 4px;
+  --radius-xs: 2px;
+}
+
+/* Form Height */
+:root {
+  --form-height-xl: 52px;
+  --form-height-lg: 48px;
+  --form-height-md: 40px;
+  --form-height-sm: 36px;
+  --form-height-xs: 32px;
+  --form-height-xxs: 28px;
+}
+
+/* etc */
+:root {
+  --transition: all 150ms ease;
+  --font-noto: 'Noto Sans KR', 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --font-pretendard: 'Pretendard', 'Pretendard Variable', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+}

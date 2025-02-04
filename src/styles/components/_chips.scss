@@ -1,0 +1,96 @@
+@use "sass:map";
+@use "../helpers/mixins/index" as *;
+/* ========================== Variables ========================== */
+$chip-style: (
+  sm: (
+    min-width: 60px,
+    height: var(--form-height-sm),
+    padding: 10px,
+  ),
+  md: (
+    min-width: 80px,
+    height: var(--form-height-md),
+    padding: 10px,
+  ),
+  lg: (
+    min-width: 100px,
+    height: var(--form-height-lg),
+    padding: 20px,
+  ),
+  xl: (
+    min-width: 120px,
+    height: var(--form-height-xl),
+    padding: 20px,
+  ),
+);
+$chip-solid-colors: (
+  primary: (
+    text: var(--color-white),
+    default: var(--color-primary-800),
+  ),
+  secondary: (
+    text: var(--color-white),
+    default: var(--color-secondary-800),
+  ),
+  gray: (
+    text: var(--color-gray-700),
+    default: var(--color-gray-400),
+  ),
+);
+$chip-line-colors: (
+  primary: (
+    text: var(--color-primary-800),
+    default: var(--color-primary-800),
+  ),
+  secondary: (
+    text: var(--color-gray-500),
+    default: var(--color-gray-100),
+  ),
+  gray: (
+    text: var(--color-gray-700),
+    default: var(--color-gray-400),
+  ),
+);
+/* ========================== Mixins ========================== */
+@mixin chip-base($size: 'md') {
+  $size-map: map.get($chip-style, $size);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: map.get($size-map, min-width);
+  height: map.get($size-map, height);
+  padding: 0 map.get($size-map, padding);
+  border-radius: calc(map.get($size-map, height) / 2);
+  transition: var(--transition);
+}
+@mixin chip-color($type, $color) {
+  $color-map: if($type == 'solid', map.get($chip-solid-colors, $color), map.get($chip-line-colors, $color));
+  
+  @include typo(var(--font-size-14), 500, map.get($color-map, text));
+  background-color: if($type == 'solid', map.get($color-map, default), var(--color-white));
+  border: 1px solid map.get($color-map, default);
+}
+/* ========================== Styles ========================== */
+.chip {
+  &__full {
+    @each $color in map.keys($chip-solid-colors) {
+      @each $size in map.keys($chip-style) {
+        &--#{"" + $color}-#{$size} {
+          @include chip-base($size: $size);
+          @include chip-color($type: 'solid', $color: $color);
+        }
+      }
+    }
+  }
+  &__line {
+    @each $color in map.keys($chip-solid-colors) {
+      @each $size in map.keys($chip-style) {
+        &--#{"" + $color}-#{$size} {
+          @include chip-base($size: $size);
+          @include chip-color($type: 'line', $color: $color);
+        }
+      }
+    }
+  }
+}
