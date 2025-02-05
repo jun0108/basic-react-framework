@@ -1,6 +1,7 @@
 @use "../helpers/mixins/index" as *;
 
 .header {
+  @include space(40px);
   display: flex;
   align-items: center;
   width: 100%;
@@ -9,7 +10,26 @@
   background: var(--layout-header-height);
   background-color: var(--color-primary-800);
   color: var(--color-white);
-  h1 {
+  &__logo {
     @include typo(var(--font-size-24),600);
+    cursor: pointer;
+  }
+  &__menu {
+    @include typo(var(--font-size-20));
+    display: flex;
+    align-items: center;
+    flex: 1 1 0%;
+    li {
+      display: flex;
+      align-items: center;
+      height: var(--form-height-md);
+      padding: 0 20px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      &:hover {
+        background-color: var(--color-primary-900);
+      }
+    }
   }
 }

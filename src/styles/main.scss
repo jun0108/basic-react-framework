@@ -1,8 +1,7 @@
 @use "./base/reset" as *;
 @use "./base/fonts" as *;
 
-@use "./layout/wrapper" as *;
-@use "./layout/header" as *;
+@use "./layout/index" as *;
 
 @use "./components/buttons" as *;
 @use "./components/textfield" as *;
@@ -27,12 +26,14 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          flex: 1 1 0%;
         }
       }
       p {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        flex: 1 1 0%;
         margin-right: 8px;
         font-weight: 600;
       }

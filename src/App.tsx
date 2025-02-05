@@ -1,19 +1,20 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 import './styles/main.scss'
+import Header from'./layouts/Header'
+import Example from'./pages/examples/index'
 import Button from'./pages/examples/Button'
 import Todo from'./pages/TodoList'
 
 function App() {
 	const exampleRoutes = [
+		{ path: "", component: Example },
 		{ path: "button", component: Button },
 	];
 	return (
 		<BrowserRouter>
 			<div className="main">
-				<header className="header">
-					<h1>React Basic Framework</h1>
-				</header>
+				<Header/>
 				<div className="main__content">
 					<Routes>
 						{exampleRoutes.map(({ path, component: Component }) => (
