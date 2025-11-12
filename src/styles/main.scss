@@ -1,12 +1,7 @@
 @use "./base/reset" as *;
 @use "./base/fonts" as *;
 
-@use "./layout/index" as *;
-
-@use "./components/buttons" as *;
-@use "./components/textfield" as *;
 @use "./components/chips" as *;
-@use "./components/selector" as *;
 
 .todo {
   width: 500px;

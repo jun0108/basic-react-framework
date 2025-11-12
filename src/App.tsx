@@ -1,30 +1,23 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router";
+import {
+	RouterProvider,
+} from "react-router"
+import router from '~/shared/route'
+
 import './styles/main.scss'
+import { GlobalStyles } from "./styles/main.ts";
+import { Layout, LayoutContent } from "./styles/layout/Wrapper.ts";
 import Header from'./layouts/Header'
-import Example from'./pages/examples/index'
-import Button from'./pages/examples/Button'
-import Todo from'./pages/TodoList'
 
 function App() {
-	const exampleRoutes = [
-		{ path: "", component: Example },
-		{ path: "button", component: Button },
-	];
+
 	return (
-		<BrowserRouter>
-			<div className="main">
-				<Header/>
-				<div className="main__content">
-					<Routes>
-						{exampleRoutes.map(({ path, component: Component }) => (
-							<Route key={path} path={`examples/${path}`} element={<Component />} />
-						))}
-						<Route path="todo" element={<Todo/>}/>
-					</Routes>
-				</div>
-			</div>
-		</BrowserRouter>
+		<Layout>
+			<GlobalStyles />
+			<Header/>
+			<LayoutContent>
+				<RouterProvider router={router} />
+			</LayoutContent>
+		</Layout>
 	)
 }
 

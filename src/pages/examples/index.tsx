@@ -1,16 +1,17 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import router from "~/shared/route"; 
+import { PageTitle, PageSubTitle } from "~/styles/layout/Wrapper";
 
 function Example() {
-	const navigate = useNavigate();
 	const menuList = [
 		{ path: "button", title: 'buttons' },
 	];
 	return (
 		<div>
-			<h1 className="page__title">UI EXAMPLE</h1>
+			<PageTitle>UI EXAMPLE</PageTitle>
+			<PageSubTitle>UI 컴포넌트 확인이 가능합니다.</PageSubTitle>
 			<ul style={{width: '200px'}}>
 				{menuList.map(({ path, title }) => (
-					<li key={path} onClick={() => navigate(path)} className="chip__line--primary-lg">
+					<li key={path} onClick={() => router.navigate(path)}>
 						<span>{title}</span>
 					</li>
 				))}
