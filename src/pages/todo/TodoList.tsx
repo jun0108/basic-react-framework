@@ -1,32 +1,20 @@
 import { useState } from 'react'
-import styled from 'styled-components'
+import { TodoList, TodoHeader } from "~/styles/pages/Todo";
 import { CmInput } from "~/styles/components/Textfield";
 import TodoItem from './TodoItem'
 
 interface Todo {
-  id: number;
-  text: string;
-  selected: boolean;
+	id: number;
+	text: string;
+	selected: boolean;
 }
-
-const TodoList = styled.div`
-  width: 500px;
-`
-const TodoListHeader = styled.div`
-	display: flex;
-	margin-bottom: 10px;
-	input {
-		flex: 1 1 0%;
-		margin-right: 8px;
-	}
-`
 
 const Todo = () => {
 	const [todoList, setTodoList] = useState<Todo[]>([])
 	const [inputValue, setInputValue] = useState('')
-  
+
 	const handleAddTodo = () => {
-		if (inputValue.trim() === '') 
+		if (inputValue.trim() === '')
 			return
 
 		const newTodo: Todo = {
@@ -34,7 +22,7 @@ const Todo = () => {
 			text: inputValue,
 			selected: false
 		}
-    
+
 		setTodoList([...todoList, newTodo])
 		setInputValue('')
 	}
@@ -44,19 +32,25 @@ const Todo = () => {
 			todo.id === id ? { ...todo, selected: !todo.selected } : todo
 		));
 	};
-
 	const handleDeleteTodo = (id: number) => {
 		setTodoList(todoList.filter((todo) => todo.id !== id))
 	}
 
+	const handleClearAll = () => {
+		setTodoList([])
+	}
+
 	return (
 		<TodoList>
-			<TodoListHeader>
+			<TodoHeader>
 				<CmInput type='text' value={inputValue} placeholder='할일을 입력해주세요.' onChange={(e) => setInputValue(e.target.value)} />
 				<button className='btn__full--primary-md' onClick={handleAddTodo}>
-					Add
+					추가
 				</button>
-			</TodoListHeader>
+				<button className='btn__line--secondary-md' onClick={handleClearAll}>
+					전체 삭제
+				</button>
+			</TodoHeader>
 			<ul>
 				{todoList.length ? (
 					todoList.map((todo) => (

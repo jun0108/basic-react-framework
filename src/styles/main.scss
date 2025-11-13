@@ -3,41 +3,8 @@
 
 @use "./components/chips" as *;
 
-.todo {
-  width: 500px;
-  &__list {
-    padding-top: 10px;
-    li {
-      & + li {
-        margin-top: 8px;
-      }
-      &.is-checked {
-        p{
-          text-decoration: line-through;
-        }
-      }
-      > div {
-        &:first-child {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          flex: 1 1 0%;
-        }
-      }
-      p {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        flex: 1 1 0%;
-        margin-right: 8px;
-        font-weight: 600;
-      }
+// @use "./pages/todo";
 
-      button {
-        display: flex;
-        align-items: center;
-        margin-left: 8px;
-      }
-    }
-  }
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
