@@ -3,13 +3,13 @@ import { css } from "styled-components";
 export const typo = ({
   fontFamily = "var(--font-noto)",
   lineHeight,
-  size = "16",
+  size = 16,
   weight = 400,
   color = "gray-900",
 }: {
   fontFamily?: string | null;
   lineHeight?: string | null;
-  size?: string;
+  size?: number;
   weight?: number;
   color?: string;
 }) => css`

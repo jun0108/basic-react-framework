@@ -12,13 +12,13 @@ export const Header = styled.header`
 `;
 
 export const HeaderLogo = styled.h1`
-  ${typo({ size: "20", weight: 600, color: "white" })};
+  ${typo({ size: 20, weight: 600, color: "white" })};
   margin-right: 40px;
   cursor: pointer;
 `;
 
 export const HeaderList = styled.ul`
-  ${typo({ size: "18", weight: 500, color: "white" })};
+  ${typo({ size: 18, weight: 500, color: "white" })};
   display: flex;
   align-items: center;
   flex: 1 1 0%;

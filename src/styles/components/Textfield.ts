@@ -7,7 +7,7 @@ import { typo } from '~/styles/helpers/mixins'
 
 /* ========================== Styles ========================== */
 export const CmInput = styled.input`
-  ${typo({ size: "14", weight: 500, color: "gray-900" })};
+  ${typo({ size: 14, weight: 500, color: "gray-900" })};
   height: var(--form-height-md);
   padding: 0 8px;
   background: var(--color-gray-100);
