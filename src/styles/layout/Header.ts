@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {typo} from "~/styles/helpers/mixins/index";
+import { typo } from "~/styles/helpers/mixins/index";
 
 export const Header = styled.header`
   display: flex;
@@ -9,17 +9,16 @@ export const Header = styled.header`
   padding: 0 30px;
   background: var(--layout-header-height);
   background-color: var(--color-primary-800);
-  color: var(--color-white);
 `;
 
 export const HeaderLogo = styled.h1`
-  ${typo({ size: "var(--font-size-24)", weight: 600, color: "var(--color-white)" })};
+  ${typo({ size: "20", weight: 600, color: "white" })};
   margin-right: 40px;
   cursor: pointer;
 `;
 
 export const HeaderList = styled.ul`
-  ${typo({ size: "var(--font-size-20)", weight:500, color: "var(--color-white)" })};
+  ${typo({ size: "18", weight: 500, color: "white" })};
   display: flex;
   align-items: center;
   flex: 1 1 0%;

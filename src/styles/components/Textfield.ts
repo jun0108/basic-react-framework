@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { typo } from '~/styles/helpers/mixins'
 
 /*/* ========================== Variables ========================== */
 
@@ -6,7 +7,7 @@ import styled from 'styled-components'
 
 /* ========================== Styles ========================== */
 export const CmInput = styled.input`
-  ${typo({size:"var(--font-size-14)", weight: 500, color:"var(--color-gray-900)"})};
+  ${typo({ size: "14", weight: 500, color: "gray-900" })};
   height: var(--form-height-md);
   padding: 0 8px;
   background: var(--color-gray-100);

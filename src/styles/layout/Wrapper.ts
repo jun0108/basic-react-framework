@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { css } from "styled-components";
-import {typo} from "~/styles/helpers/mixins/index";
+import { typo } from "~/styles/helpers/mixins/index";
 
 export const Wrapper = () => css`
 html {
@@ -70,10 +70,10 @@ export const LayoutContent = styled.div`
   background-color: var(--color-gray-100);
 `;
 export const PageTitle = styled.h1`
-  ${typo({size:"var(--font-size-22)", weight: 500})};
+  ${typo({ size: "20", weight: 500 })};
   margin-bottom: 10px;
 `;
 export const PageSubTitle = styled.h2`
-  ${typo({size:"var(--font-size-18)", weight: 500, color:"var(--color-gray-800)"})};
+  ${typo({ size: "18", weight: 500, color: "gray-800" })};
   margin-bottom: 10px;
 `;

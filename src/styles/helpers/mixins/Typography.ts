@@ -1,23 +1,23 @@
 import { css } from "styled-components";
 
 export const typo = ({
-	fontFamily = "var(--font-noto)",
-	lineHeight,
-	size = "var(--font-size-16)",
-	weight = 400,
-	color = "var(--color-gray-900)",
+  fontFamily = "var(--font-noto)",
+  lineHeight,
+  size = "16",
+  weight = 400,
+  color = "gray-900",
 }: {
-    fontFamily?: string | null;
-    lineHeight?: string | null;
-    size?: string;
-    weight?: number;
-    color?: string;
-  }) => css`
-    font-family: ${fontFamily};
-    ${lineHeight ? `line-height: ${lineHeight};` : "1.5"}
-    font-size: ${size};
+  fontFamily?: string | null;
+  lineHeight?: string | null;
+  size?: string;
+  weight?: number;
+  color?: string;
+}) => css`
+    ${fontFamily ? `font-family: ${fontFamily};` : ""}
+    line-height: ${lineHeight || "1.5"};
+    font-size: var(--font-size-${size});
     font-weight: ${weight};
-    color: ${color};
+    color: var(--color-${color});
 `;
 
 export const truncate = css`
@@ -27,10 +27,10 @@ export const truncate = css`
 `;
 
 export const multiTruncate = ({
-	row = 2,
+  row = 2,
 }: {
   row?: number;
-  }) => css`
+}) => css`
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
