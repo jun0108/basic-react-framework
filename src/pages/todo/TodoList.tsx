@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { TodoList, TodoHeader } from "~/styles/pages/Todo";
-import { CmInput } from "~/styles/components/Textfield";
+import CmInput from "~/components/CmInput";
 import TodoItem from './TodoItem'
 
 interface Todo {
@@ -43,7 +43,12 @@ const Todo = () => {
 	return (
 		<TodoList>
 			<TodoHeader>
-				<CmInput type='text' value={inputValue} placeholder='할일을 입력해주세요.' onChange={(e) => setInputValue(e.target.value)} />
+				<CmInput
+					type='text'
+					value={inputValue}
+					placeholder='할일을 입력해주세요.'
+					onChange={(value) => setInputValue(value)}
+				/>
 				<button className='btn__full--primary-md' onClick={handleAddTodo}>
 					추가
 				</button>

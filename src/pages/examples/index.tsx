@@ -29,7 +29,8 @@ function Example() {
 	`
 
 	const menuList = [
-		{ path: "button", title: 'buttons' },
+		{ path: "button", title: 'Button' },
+		{ path: "textfield", title: 'Textfield' },
 	];
 	return (
 		<Example>

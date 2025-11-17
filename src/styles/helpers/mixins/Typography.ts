@@ -1,19 +1,19 @@
 import { css } from "styled-components";
 
 export const typo = ({
-  fontFamily = "var(--font-noto)",
+  fontFamily,
   lineHeight,
   size = 16,
   weight = 400,
   color = "gray-900",
 }: {
-  fontFamily?: string | null;
+  fontFamily?: string;
   lineHeight?: string | null;
   size?: number;
   weight?: number;
   color?: string;
 }) => css`
-    ${fontFamily ? `font-family: ${fontFamily};` : ""}
+    font-family: ${`var(--font-${fontFamily})` || null};
     line-height: ${lineHeight || "1.5"};
     font-size: var(--font-size-${size});
     font-weight: ${weight};
